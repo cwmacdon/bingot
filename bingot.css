@@ -1,0 +1,22 @@
+#characters {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+}
+.character {
+    display: block;
+    height: 40px;
+    width: 40px;
+    border: solid 5px transparent;
+    border-radius: 1em;
+    cursor: pointer;
+}
+.character:hover {
+    border-color: black;
+}
+.character:active {
+    cursor: move;
+}
+
+.dragging {
+    position: relative;
+}
