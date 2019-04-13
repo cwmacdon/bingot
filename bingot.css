@@ -17,18 +17,23 @@ body {
     width: 40px;
     cursor: pointer;
 }
+.dragging #characters * {
+    pointer-events: none;
+}
+
 #characters .character {
     border: solid 5px transparent;
     border-radius: 1em;
 }
 #characters .character:hover {
     border-color: black;
+    pointer-events: auto;
 }
 .character:active {
     cursor: move;
 }
-.dragging {
-    position: absolute;
+.draggingover {
+    background: #000;
 }
 #card {
     display: grid;

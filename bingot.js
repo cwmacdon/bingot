@@ -47,8 +47,6 @@ const characters = [
 ];
 
 const charactersEl = document.getElementById('characters');
-charactersEl.addEventListener('dragover', dragover);
-charactersEl.addEventListener('drop', drop);
 
 characters.forEach((character) => {
     const characterEl = document.createElement('img');
@@ -65,15 +63,21 @@ characters.forEach((character) => {
     charactersEl.appendChild(characterEl);
 });
 
-const slots = document.querySelectorAll('.slot');
+const card = document.getElementById('card');
 
-slots.forEach((slot) => {
-    slot.addEventListener('dragover', dragover);
-    slot.addEventListener('drop', drop);
-});
+// add drop zone handlers
+charactersEl.addEventListener('dragover', dragover);
+charactersEl.addEventListener('dragenter', dragenter);
+charactersEl.addEventListener('dragleave', dragleave);
+charactersEl.addEventListener('drop', drop);
+card.addEventListener('dragover', dragover);
+card.addEventListener('drop', drop);
+card.addEventListener('dragenter', dragenter);
+card.addEventListener('dragleave', dragleave);
 
 function dragstart(e) {
     e.dataTransfer.setData('text', e.target.id);
+    document.body.classList.add('dragging');
 }
 
 function dragover(e) {
@@ -83,9 +87,20 @@ function dragover(e) {
     }
 }
 
+function dragenter(e) {
+    e.srcElement.classList.add('draggingover');
+}
+
+function dragleave(e) {
+    e.srcElement.classList.remove('draggingover');
+}
+
 function drop(e) {
     const data = e.dataTransfer.getData('text');
     e.target.appendChild(document.getElementById(data));
+    e.srcElement.classList.remove('draggingover');
+
+    document.body.classList.remove('dragging');
     // updatePicks();
 }
 
