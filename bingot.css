@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Cinzel Decorative', cursive;
+}
+#characters, #card {
+    float: left;
+}
+#characters {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+}
+.character {
+    float: left;
+    display: block;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+#characters .character {
+    border: solid 5px transparent;
+    border-radius: 1em;
+}
+#characters .character:hover {
+    border-color: black;
+}
+.character:active {
+    cursor: move;
+}
+.dragging {
+    position: absolute;
+}
+#card {
+    display: grid;
+    grid-template-columns: repeat(5, 82px);
+    width: 410px;
+    border: 1px solid black;
+}
+#card .character, .slot {
+    width: 80px;
+    height: 80px;
+}
+.slot {
+    border: 1px solid black;
+}
+.dragover {
+    background: black;
+}
+#output {
+    height: 410px;
+}
