@@ -47,36 +47,58 @@ const characters = [
 ];
 
 const charactersEl = document.getElementById('characters');
+charactersEl.addEventListener('dragover', dragover);
+charactersEl.addEventListener('drop', drop);
 
 characters.forEach((character) => {
     const characterEl = document.createElement('img');
-    const name = character.split('.png')[0].replace('_', ' ');
+    const id = character.split('.png')[0];
+    const name = id.replace(/_/g, ' ');
     characterEl.src = `img/${character}`;
     characterEl.className = 'character';
+    characterEl.draggable = 'true';
     characterEl.title = name;
+    characterEl.id = id;
 
-    characterEl.addEventListener('mousedown', (e) => {
-        const node = e.currentTarget;
-        this.start = e.clientX;
-        this.startOffset = node.offsetLeft;
-        this.diff = 0;
-        node.classList.add('dragging');
-        const onMouseMove = (e) => {
-            let diff = e.clientX - this.start;
-            this.diff = diff;
-            console.log(this.diff);
-            node.style.left = `${diff}px`;
-        }
-        const onMouseUp = () => {
-            node.style.left = `0`;
-            node.classList.remove('dragging');
-            document.body.removeEventListener('mousemove', onMouseMove);
-            document.body.removeEventListener('mouseup', onMouseUp);
-            console.log(this.diff);
-        }
-        document.body.addEventListener('mousemove', onMouseMove);
-        document.body.addEventListener('mouseup', onMouseUp);
-    });
+    characterEl.addEventListener('dragstart', dragstart);
 
     charactersEl.appendChild(characterEl);
 });
+
+const slots = document.querySelectorAll('.slot');
+
+slots.forEach((slot) => {
+    slot.addEventListener('dragover', dragover);
+    slot.addEventListener('drop', drop);
+});
+
+function dragstart(e) {
+    e.dataTransfer.setData('text', e.target.id);
+}
+
+function dragover(e) {
+    // prevent dropping on images
+    if (!e.target.draggable) {
+        e.preventDefault();
+    }
+}
+
+function drop(e) {
+    const data = e.dataTransfer.getData('text');
+    e.target.appendChild(document.getElementById(data));
+    // updatePicks();
+}
+
+function updatePicks() {
+    // document.getElementById('output').value = picks.join(',');
+}
+
+function getPicks() {
+    const slots = document.querySelectorAll('.slot');
+    const picks = [];
+    slots.forEach((slot) => {
+        const pick = slot.childNodes[0];
+        picks.push(pick ? pick.id.replace(/ /g, '-') : '');
+    });
+    return picks;
+}
