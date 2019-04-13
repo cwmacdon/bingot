@@ -59,6 +59,7 @@ characters.forEach((character) => {
     characterEl.id = id;
 
     characterEl.addEventListener('dragstart', dragstart);
+    characterEl.addEventListener('dblclick', dblclick);
 
     charactersEl.appendChild(characterEl);
 });
@@ -78,6 +79,13 @@ card.addEventListener('dragleave', dragleave);
 function dragstart(e) {
     e.dataTransfer.setData('text', e.target.id);
     document.body.classList.add('dragging');
+}
+
+function dblclick(e) {
+    const firstOpenSlot = getFirstOpenSlot();
+    if (firstOpenSlot) {
+        firstOpenSlot.appendChild(e.target);
+    }
 }
 
 function dragover(e) {
@@ -116,4 +124,15 @@ function getPicks() {
         picks.push(pick ? pick.id.replace(/ /g, '-') : '');
     });
     return picks;
+}
+
+function getFirstOpenSlot() {
+    const slots = document.querySelectorAll('.slot');
+    let firstOpenSlot;
+    slots.forEach((slot) => {
+        if (!firstOpenSlot && !slot.childNodes[0]) {
+            firstOpenSlot = slot;
+        }
+    });
+    return firstOpenSlot;
 }
