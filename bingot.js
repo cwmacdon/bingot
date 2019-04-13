@@ -59,6 +59,7 @@ characters.forEach((character) => {
     characterEl.id = id;
 
     characterEl.addEventListener('dragstart', dragstart);
+    characterEl.addEventListener('dragend', dragend);
     characterEl.addEventListener('dblclick', dblclick);
 
     charactersEl.appendChild(characterEl);
@@ -79,6 +80,10 @@ card.addEventListener('dragleave', dragleave);
 function dragstart(e) {
     e.dataTransfer.setData('text', e.target.id);
     document.body.classList.add('dragging');
+}
+
+function dragend(e) {
+    document.body.classList.remove('dragging');
 }
 
 function dblclick(e) {
@@ -107,8 +112,6 @@ function drop(e) {
     const data = e.dataTransfer.getData('text');
     e.target.appendChild(document.getElementById(data));
     e.srcElement.classList.remove('draggingover');
-
-    document.body.classList.remove('dragging');
     // updatePicks();
 }
 
