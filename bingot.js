@@ -80,9 +80,14 @@ card.addEventListener('dragleave', dragleave);
 card.addEventListener('click', cardclick);
 let selected;
 
+function setselected(characterEl) {
+    document.getElementById('selected').innerText = characterEl.title;
+}
+
 function dragstart(e) {
     e.dataTransfer.setData('text', e.target.id);
     document.body.classList.add('dragging');
+    setselected(e.target);
 }
 
 function dragend(e) {
@@ -92,26 +97,29 @@ function dragend(e) {
 function characterclick(e) {
     if (e.target.parentNode === document.getElementById('characters')) {
         if (selected === e.target) {
-            selected = null;
-            document.body.classList.remove('selected');
-            e.target.classList.remove('selected');
+            deselect();
         } else {
             selected = e.target;
             document.querySelectorAll('#characters .character').forEach((character) => {
                 character.classList.remove('selected');
             });
+            setselected(e.target);
             document.body.classList.add('selected');
             e.target.classList.add('selected');
         }
     }
 }
 
+function deselect() {
+    document.body.classList.remove('selected');
+    selected.classList.remove('selected');
+    selected = null;
+}
+
 function cardclick(e) {
     if (selected && !e.target.draggable) {
         e.target.appendChild(selected);
-        document.body.classList.remove('selected');
-        selected.classList.remove('selected');
-        selected = null;
+        deselect();
         updatePicks();
     } else if (!selected && e.target.draggable) {
         document.getElementById('characters').appendChild(e.target);

@@ -3,6 +3,9 @@ body {
     padding: 0 20px;
     font-family: 'Cinzel Decorative', cursive;
 }
+h1 {
+    text-align: center;
+}
 #characters, #card, #picks {
     float: left;
 }
@@ -31,9 +34,15 @@ body {
     border: solid 5px transparent;
     border-radius: 1em;
 }
-#characters .character.selected, #characters .character:hover {
+#characters .character.selected {
     border-color: #bb0a1e;
+}
+#characters .character:hover {
+    border-color: grey;
     pointer-events: auto;
+}
+#characters .character.selected:hover {
+    border-color: #bb1010;
 }
 .character:active {
     cursor: move;
@@ -72,6 +81,22 @@ body {
     height: 384px;
 }
 
+#selected {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    background-color: crimson;
+    opacity: 0.75;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 20px 0;
+}
+.selected #selected, .dragging #selected {
+    display: block;
+}
+
 @media only screen and (max-width: 600px) {
     #characters {
         display: block;
@@ -95,5 +120,8 @@ body {
     #output {
         width: 100%;
         height: auto;
+    }
+    #selected {
+        top: 125px;
     }
 }
