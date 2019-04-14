@@ -160,6 +160,7 @@ function drop(e) {
 function updatePicks() {
     const picks = getPicks();
     document.getElementById('output').value = picks.join(',');
+    document.getElementById('mail').href = `mailto:cwmacdon+bingot@gmail.com?body=${picks}`;
 }
 
 function getPicks() {
