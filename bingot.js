@@ -112,8 +112,10 @@ function cardclick(e) {
         document.body.classList.remove('selected');
         selected.classList.remove('selected');
         selected = null;
+        updatePicks();
     } else if (!selected && e.target.draggable) {
         document.getElementById('characters').appendChild(e.target);
+        updatePicks();
     }
 }
 
@@ -121,6 +123,7 @@ function dblclick(e) {
     const firstOpenSlot = getFirstOpenSlot();
     if (firstOpenSlot) {
         firstOpenSlot.appendChild(e.target);
+        updatePicks();
     }
 }
 
