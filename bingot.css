@@ -55,6 +55,10 @@ body {
 .dragover {
     background: black;
 }
+#picks p {
+    font-size: 8px;
+    display: inline-block;
+}
 #output {
-    height: 410px;
+    height: 360px;
 }

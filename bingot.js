@@ -112,11 +112,12 @@ function drop(e) {
     const data = e.dataTransfer.getData('text');
     e.target.appendChild(document.getElementById(data));
     e.srcElement.classList.remove('draggingover');
-    // updatePicks();
+    updatePicks();
 }
 
 function updatePicks() {
-    // document.getElementById('output').value = picks.join(',');
+    const picks = getPicks();
+    document.getElementById('output').value = picks.join(',');
 }
 
 function getPicks() {
