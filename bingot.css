@@ -31,14 +31,14 @@ body {
     border: solid 5px transparent;
     border-radius: 1em;
 }
-#characters .character:hover {
+#characters .character.selected, #characters .character:hover {
     border-color: #bb0a1e;
     pointer-events: auto;
 }
 .character:active {
     cursor: move;
 }
-#card .draggingover {
+.selected .slot:hover, #card .draggingover {
     background: #bb0a1e;
 }
 #card {

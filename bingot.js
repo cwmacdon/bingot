@@ -61,6 +61,7 @@ characters.forEach((character) => {
     characterEl.addEventListener('dragstart', dragstart);
     characterEl.addEventListener('dragend', dragend);
     characterEl.addEventListener('dblclick', dblclick);
+    characterEl.addEventListener('click', characterclick);
 
     charactersEl.appendChild(characterEl);
 });
@@ -76,6 +77,8 @@ card.addEventListener('dragover', dragover);
 card.addEventListener('drop', drop);
 card.addEventListener('dragenter', dragenter);
 card.addEventListener('dragleave', dragleave);
+card.addEventListener('click', cardclick);
+let selected;
 
 function dragstart(e) {
     e.dataTransfer.setData('text', e.target.id);
@@ -84,6 +87,34 @@ function dragstart(e) {
 
 function dragend(e) {
     document.body.classList.remove('dragging');
+}
+
+function characterclick(e) {
+    if (e.target.parentNode === document.getElementById('characters')) {
+        if (selected === e.target) {
+            selected = null;
+            document.body.classList.remove('selected');
+            e.target.classList.remove('selected');
+        } else {
+            selected = e.target;
+            document.querySelectorAll('#characters .character').forEach((character) => {
+                character.classList.remove('selected');
+            });
+            document.body.classList.add('selected');
+            e.target.classList.add('selected');
+        }
+    }
+}
+
+function cardclick(e) {
+    if (selected && !e.target.draggable) {
+        e.target.appendChild(selected);
+        document.body.classList.remove('selected');
+        selected.classList.remove('selected');
+        selected = null;
+    } else if (!selected && e.target.draggable) {
+        document.getElementById('characters').appendChild(e.target);
+    }
 }
 
 function dblclick(e) {
@@ -101,17 +132,17 @@ function dragover(e) {
 }
 
 function dragenter(e) {
-    e.srcElement.classList.add('draggingover');
+    e.target.classList.add('draggingover');
 }
 
 function dragleave(e) {
-    e.srcElement.classList.remove('draggingover');
+    e.target.classList.remove('draggingover');
 }
 
 function drop(e) {
     const data = e.dataTransfer.getData('text');
     e.target.appendChild(document.getElementById(data));
-    e.srcElement.classList.remove('draggingover');
+    e.target.classList.remove('draggingover');
     updatePicks();
 }
 
