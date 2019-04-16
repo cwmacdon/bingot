@@ -69,6 +69,7 @@ class CardBuilder {
     constructor() {
         this.charactersEl = document.getElementById('characters');
         this.cardEl = document.getElementById('card');
+        this.picksLoaderEl = document.getElementById('picksLoader');
         this.selectedAnnounceEl = document.getElementById('selected');
         
         this.selected = null;
@@ -81,6 +82,7 @@ class CardBuilder {
 
         this.createCharacterList();
         this.createCard();
+        this.createPicksLoader();
     }
 
     createCharacterList() {
@@ -130,15 +132,7 @@ class CardBuilder {
             this.deselect();
             this.updatePicks();
         } else if (!this.selected && e.target.draggable) {
-            document.getElementById('characters').appendChild(e.target);
-            this.updatePicks();
-        }
-    }
-    
-    dblclick(e) {
-        const firstOpenSlot = this.getFirstOpenSlot();
-        if (firstOpenSlot) {
-            firstOpenSlot.appendChild(e.target);
+            this.unpick(e.target);
             this.updatePicks();
         }
     }
@@ -199,6 +193,46 @@ class CardBuilder {
         });
         return firstOpenSlot;
     }
+
+    unpick(el) {
+        this.charactersEl.appendChild(el);
+    }
+
+    createPicksLoader() {
+        Object.keys(picks).forEach((name) => {
+            const option = document.createElement('option');
+            option.value = name;
+            option.innerText = name;
+            this.picksLoaderEl.appendChild(option);
+        });
+
+        picksLoader.addEventListener('change', this.onChangePicks.bind(this));
+    }
+
+    onChangePicks(e) {
+        const pickSet = this.picksLoaderEl.value;
+        if (pickSet) {
+            this.loadPicks(picks[pickSet]);
+        } else {
+            this.clearBoard();
+        }
+    }
+
+    clearBoard() {
+        const selectedCharacterEls = document.querySelectorAll('.slot div');
+
+        selectedCharacterEls.forEach((characterEl) => {
+            this.unpick(characterEl);
+        });
+    }
+
+    loadPicks(characters) {
+        this.clearBoard();
+        characters.forEach((character) => {
+            const characterEl = document.getElementById(character);
+            this.append(characterEl);
+        });
+    }
 }
 
 class Character {
@@ -211,8 +245,8 @@ class Character {
         this.append = append;
         this.name = id.replace(/_/g, ' ');
 
-        this.el = document.createElement('img');
-        this.el.src = `img/${id}.png`;
+        this.el = document.createElement('div');
+        this.el.style.backgroundImage = `url('img/${id}.png')`;
 
         this.el.classList.add('character');
         if (status === 'dead') {
@@ -223,7 +257,6 @@ class Character {
         this.el.id = id;
         this.el.draggable = 'true';
         this.el.addEventListener('click', this.click.bind(this));
-        this.el.addEventListener('dblclick', this.dblclick.bind(this));
         this.el.addEventListener('dragstart', this.dragstart.bind(this));
         this.el.addEventListener('dragend', this.dragend.bind(this));
 
@@ -240,11 +273,6 @@ class Character {
         }
     }
 
-    dblclick(e) {
-        e.preventDefault();
-        this.append(e.target);
-    }
-
     dragstart(e) {
         e.dataTransfer.setData('id', e.target.id);
         document.body.classList.add('dragging');
@@ -256,4 +284,4 @@ class Character {
     } 
 }
 
-new CardBuilder();
+const cardBuilder = new CardBuilder();

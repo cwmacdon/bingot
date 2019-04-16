@@ -12,7 +12,8 @@ h1 {
 #characters {
     display: grid;
     grid-template-columns: repeat(5, 50px);
-    margin-right: 20px;
+    padding-right: 10px;
+    margin-right: 10px;
     overflow: auto;
     height: 410px;
 }
@@ -20,19 +21,22 @@ h1 {
     font-size: 10px;
 }
 .character {
+    position: relative;
     float: left;
     display: block;
     height: 40px;
     width: 40px;
     cursor: pointer;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 .dragging #characters * {
     pointer-events: none;
 }
 
 #characters .character {
+    border-radius: 5px;
     border: solid 5px transparent;
-    border-radius: 1em;
 }
 #characters .character.selected {
     border-color: #bb0a1e;
@@ -59,6 +63,22 @@ h1 {
 #card .character, .slot {
     width: 80px;
     height: 80px;
+}
+.dead:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "\274c"; /* use the hex value here... */
+    font-size: 30px; 
+    color: #FFF;
+    line-height: 50px;
+    text-align: center;
+}
+.slot .dead:after {
+    font-size: 50px;
+    line-height: 100px;
 }
 .slot {
     border: 1px solid black;
