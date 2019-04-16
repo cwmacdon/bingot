@@ -117,10 +117,6 @@ h1 {
         margin-left: 0;
         width: 100%;
     }
-    #output {
-        width: 100%;
-        height: auto;
-    }
     #selected {
         top: 125px;
     }
