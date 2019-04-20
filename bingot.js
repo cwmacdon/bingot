@@ -246,7 +246,7 @@ class Character {
         this.name = id.replace(/_/g, ' ');
 
         this.el = document.createElement('div');
-        this.el.style.backgroundImage = `url('img/${id}.png')`;
+        this.el.style.backgroundImage = `url('img/${id}-min.png')`;
 
         this.el.classList.add('character');
         if (status === 'dead') {
