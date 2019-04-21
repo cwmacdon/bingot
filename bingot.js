@@ -1,50 +1,50 @@
-const characters = [
-    { id: 'Archmaester_Ebrose', status: 'alive' },
-    { id: 'Arya_Stark', status: 'alive' },
-    { id: 'Beric_Dondarrion', status: 'alive' },
-    { id: 'Bran_Stark', status: 'alive' },
-    { id: 'Brienne_of_Tarth', status: 'alive' },
-    { id: 'Cersei_Lannister', status: 'alive' },
-    { id: 'Daario_Naharis', status: 'alive' },
-    { id: 'Daenerys_Targaryen', status: 'alive' },
-    { id: 'Davos_Seaworth', status: 'alive' },
-    { id: 'Dolorous_Edd', status: 'alive' },
-    { id: 'Drogon_Dragon', status: 'alive' },
-    { id: 'Edmure_Tully', status: 'alive' },
-    { id: 'Euron_Greyjoy', status: 'alive' },
-    { id: 'Gendry', status: 'alive' },
-    { id: 'Ghost_Direwolf', status: 'alive' },
-    { id: 'Gilly', status: 'alive' },
-    { id: 'Gregor_Clegane', status: 'alive' },
-    { id: 'Grey_Worm', status: 'alive' },
-    { id: 'Hot_Pie', status: 'alive' },
-    { id: 'Jaime_Lannister', status: 'alive' },
-    { id: 'Jaqen_Hghar', status: 'alive' },
-    { id: 'Jon_Snow', status: 'alive' },
-    { id: 'Jorah_Mormont', status: 'alive' },
-    { id: 'Little_Sam', status: 'alive' },
-    { id: 'Lyanna_Mormont', status: 'alive' },
-    { id: 'Meera_Reed', status: 'alive' },
-    { id: 'Melisandre', status: 'alive' },
-    { id: 'Missandei', status: 'alive' },
-    { id: 'Night_King', status: 'alive' },
-    { id: 'Nymeria_Direwolf', status: 'alive' },
-    { id: 'Podrick_Payne', status: 'alive' },
-    { id: 'Qyburn', status: 'alive' },
-    { id: 'Rhaegal_Dragon', status: 'alive' },
-    { id: 'Robin_Arryn', status: 'alive' },
-    { id: 'Samwell_Tarly', status: 'alive' },
-    { id: 'Sandor_Clegane', status: 'alive' },
-    { id: 'Sansa_Stark', status: 'alive' },
-    { id: 'Ser_Bronn', status: 'alive' },
-    { id: 'Theon_Greyjoy', status: 'alive' },
-    { id: 'Tormund_Giantsbane', status: 'alive' },
-    { id: 'Tycho_Nestoris', status: 'alive' },
-    { id: 'Tyrion_Lannister', status: 'alive' },
-    { id: 'Varys', status: 'alive' },
-    { id: 'Viserion_Dragon', status: 'alive' },
-    { id: 'Yara_Greyjoy', status: 'alive' }
-];
+const characters = {
+    'Archmaester_Ebrose': { status: 'alive' },
+    'Arya_Stark': { status: 'alive' },
+    'Beric_Dondarrion': { status: 'alive' },
+    'Bran_Stark': { status: 'alive' },
+    'Brienne_of_Tarth': { status: 'alive' },
+    'Cersei_Lannister': { status: 'alive' },
+    'Daario_Naharis': { status: 'alive' },
+    'Daenerys_Targaryen': { status: 'alive' },
+    'Davos_Seaworth': { status: 'alive' },
+    'Dolorous_Edd': { status: 'alive' },
+    'Drogon_Dragon': { status: 'alive' },
+    'Edmure_Tully': { status: 'alive' },
+    'Euron_Greyjoy': { status: 'alive' },
+    'Gendry': { status: 'alive' },
+    'Ghost_Direwolf': { status: 'alive' },
+    'Gilly': { status: 'alive' },
+    'Gregor_Clegane': { status: 'alive' },
+    'Grey_Worm': { status: 'alive' },
+    'Hot_Pie': { status: 'alive' },
+    'Jaime_Lannister': { status: 'alive' },
+    'Jaqen_Hghar': { status: 'alive' },
+    'Jon_Snow': { status: 'alive' },
+    'Jorah_Mormont': { status: 'alive' },
+    'Little_Sam': { status: 'alive' },
+    'Lyanna_Mormont': { status: 'alive' },
+    'Meera_Reed': { status: 'alive' },
+    'Melisandre': { status: 'alive' },
+    'Missandei': { status: 'alive' },
+    'Night_King': { status: 'alive' },
+    'Nymeria_Direwolf': { status: 'alive' },
+    'Podrick_Payne': { status: 'alive' },
+    'Qyburn': { status: 'alive' },
+    'Rhaegal_Dragon': { status: 'alive' },
+    'Robin_Arryn': { status: 'alive' },
+    'Samwell_Tarly': { status: 'alive' },
+    'Sandor_Clegane': { status: 'alive' },
+    'Sansa_Stark': { status: 'alive' },
+    'Ser_Bronn': { status: 'alive' },
+    'Theon_Greyjoy': { status: 'alive' },
+    'Tormund_Giantsbane': { status: 'alive' },
+    'Tycho_Nestoris': { status: 'alive' },
+    'Tyrion_Lannister': { status: 'alive' },
+    'Varys': { status: 'alive' },
+    'Viserion_Dragon': { status: 'alive' },
+    'Yara_Greyjoy': { status: 'alive' }
+};
 
 const picks = {
     'Kaitlin Cox': [ 'Tormund_Giantsbane', 'Arya_Stark', 'Sandor_Clegane', 'Little_Sam', 'Gregor_Clegane', 'Night_King', 'Samwell_Tarly', 'Jorah_Mormont', 'Euron_Greyjoy', 'Archmaester_Ebrose', 'Grey_Worm', 'Tyrion_Lannister', 'Cersei_Lannister', 'Hot_Pie', 'Ghost_Direwolf', 'Varys', 'Brienne_of_Tarth', 'Davos_Seaworth', 'Jaqen_Hghar', 'Jaime_Lannister', 'Ser_Bronn', 'Missandei', 'Lyanna_Mormont', 'Theon_Greyjoy', 'Yara_Greyjoy'],
@@ -73,7 +73,6 @@ class CardBuilder {
         this.selectedAnnounceEl = document.getElementById('selected');
         
         this.selected = null;
-        this.picks = [];
 
         this.getSelected = this.getSelected.bind(this);
         this.setSelected = this.setSelected.bind(this);
@@ -82,13 +81,13 @@ class CardBuilder {
 
         this.createCharacterList();
         this.createCard();
-        this.createPicksLoader();
     }
 
     createCharacterList() {
-        characters.forEach((character) => {
-            const char = new Character(character, this.getSelected, this.setSelected, this.deselect, this.append);
-            this.charactersEl.appendChild(char.el);
+        Object.keys(characters).forEach((id) => {
+            const props = characters[id];
+            const character = new Character(id, props, this.getSelected, this.setSelected, this.deselect, this.append);
+            this.charactersEl.appendChild(character.el);
         });
     }
     
@@ -198,26 +197,6 @@ class CardBuilder {
         this.charactersEl.appendChild(el);
     }
 
-    createPicksLoader() {
-        Object.keys(picks).forEach((name) => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.innerText = name;
-            this.picksLoaderEl.appendChild(option);
-        });
-
-        picksLoader.addEventListener('change', this.onChangePicks.bind(this));
-    }
-
-    onChangePicks(e) {
-        const pickSet = this.picksLoaderEl.value;
-        if (pickSet) {
-            this.loadPicks(picks[pickSet]);
-        } else {
-            this.clearBoard();
-        }
-    }
-
     clearBoard() {
         const selectedCharacterEls = document.querySelectorAll('.slot div');
 
@@ -236,9 +215,8 @@ class CardBuilder {
 }
 
 class Character {
-    constructor(character, getSelected, setSelected, deselect, append) {
-        const { id, status } = character;
-        this.character = character;
+    constructor(id, props, getSelected, setSelected, deselect, append) {
+        const { status } = props;
         this.getSelected = getSelected;
         this.setSelected = setSelected;
         this.deselect = deselect;
@@ -284,4 +262,46 @@ class Character {
     } 
 }
 
+class Picks {
+    constructor(cardBuilder) {
+        this.cardBuilder = cardBuilder;
+        this.minisEl = document.getElementById('minis');
+        
+        this.selected = null;
+
+        Object.keys(picks).forEach((picker) => {
+            this.createMiniCard(picker, picks[picker]);
+        });
+    }
+
+    createMiniCard(picker, pickSet) {
+        const miniCard = document.createElement('div');
+        miniCard.classList.add('miniCard');
+        const label = document.createElement('div');
+        label.innerText = picker;
+        label.classList.add('picker');
+        miniCard.appendChild(label);
+        const picks = document.createElement('div');
+        picks.classList.add('picks');
+        miniCard.appendChild(picks);
+        pickSet.forEach((id) => {
+            const status = characters[id].status;
+            const img = document.createElement('div');
+            img.style.backgroundImage = `url('img/${id}-min.png')`;
+            
+            img.classList.add('miniChar');
+            if (status === 'dead') {
+                img.classList.add('dead');
+            }
+            picks.appendChild(img);
+            img.addEventListener('click', () => {
+                cardBuilder.loadPicks(pickSet);
+            });
+        });
+        this.minisEl.appendChild(miniCard);
+    }
+}
+
 const cardBuilder = new CardBuilder();
+
+new Picks(cardBuilder);
