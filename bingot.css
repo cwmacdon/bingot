@@ -8,6 +8,7 @@ h1 {
 }
 #characters, #card, #picks {
     float: left;
+    margin-bottom: 10px;
 }
 #characters {
     display: grid;
@@ -88,6 +89,7 @@ h1 {
 }
 #picks {
     margin-left: 20px;
+    width: calc(100% - 260px - 410px - 20px - 40px);
 }
 #picks p {
     font-size: 8px;
@@ -118,15 +120,10 @@ h1 {
     display: block;
 }
 
-#minis {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    align-items: center;
-}
 .miniCard {
     display: inline-grid;
     width: calc(5 * 15px);
-    margin: 10px auto 5px;
+    margin: 0 auto 15px;
     padding: 0 5px;
 }
 .picker {
@@ -166,5 +163,10 @@ h1 {
     }
     #selected {
         top: 125px;
+    }
+    #minis {
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+        align-items: center;
     }
 }
