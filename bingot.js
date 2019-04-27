@@ -231,6 +231,7 @@ class Character {
         this.el.style.backgroundImage = `url('img/${id}-min.png')`;
 
         this.el.classList.add('character');
+        this.el.classList.add(id);
         if (status === 'dead') {
             this.el.classList.add('dead');
         }
@@ -290,15 +291,16 @@ class Picks {
         miniCard.appendChild(picks);
         pickSet.forEach((id) => {
             const status = characters[id].status;
-            const img = document.createElement('div');
-            img.style.backgroundImage = `url('img/${id}-min.png')`;
+            const char = document.createElement('div');
+            char.style.backgroundImage = `url('img/${id}-min.png')`;
             
-            img.classList.add('miniChar');
+            char.classList.add('miniChar');
+            char.classList.add(id);
             if (status === 'dead') {
-                img.classList.add('dead');
+                char.classList.add('dead');
             }
-            picks.appendChild(img);
-            img.addEventListener('click', () => {
+            picks.appendChild(char);
+            char.addEventListener('click', () => {
                 cardBuilder.loadPicks(pickSet);
             });
         });
@@ -306,6 +308,26 @@ class Picks {
     }
 }
 
+class Killer {
+    constructor() {
+
+    }
+
+    kill(id) {
+        [...document.getElementsByClassName(id)].forEach((char) => {
+            char.classList.add('dead');
+        });
+    }
+}
+
 const cardBuilder = new CardBuilder();
 
 new Picks(cardBuilder);
+
+const killer = new Killer();
+
+const deathList = [ ];
+
+for(const id of deathList) {
+    killer.kill(id);
+}
