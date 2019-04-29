@@ -1,14 +1,20 @@
 const characters = {
+    'Dolorous_Edd': { status: 'dead' },
+    'Lyanna_Mormont': { status: 'dead' },
+    'Beric_Dondarrion': { status: 'dead' },
+    'Theon_Greyjoy': { status: 'dead' },
+    'Night_King': { status: 'dead' },
+    'Viserion_Dragon': { status: 'dead' },
+    'Jorah_Mormont': { status: 'dead' },
+    'Melisandre': { status: 'dead' },
     'Archmaester_Ebrose': { status: 'alive' },
     'Arya_Stark': { status: 'alive' },
-    'Beric_Dondarrion': { status: 'alive' },
     'Bran_Stark': { status: 'alive' },
     'Brienne_of_Tarth': { status: 'alive' },
     'Cersei_Lannister': { status: 'alive' },
     'Daario_Naharis': { status: 'alive' },
     'Daenerys_Targaryen': { status: 'alive' },
     'Davos_Seaworth': { status: 'alive' },
-    'Dolorous_Edd': { status: 'alive' },
     'Drogon_Dragon': { status: 'alive' },
     'Edmure_Tully': { status: 'alive' },
     'Euron_Greyjoy': { status: 'alive' },
@@ -21,13 +27,9 @@ const characters = {
     'Jaime_Lannister': { status: 'alive' },
     'Jaqen_Hghar': { status: 'alive' },
     'Jon_Snow': { status: 'alive' },
-    'Jorah_Mormont': { status: 'alive' },
     'Little_Sam': { status: 'alive' },
-    'Lyanna_Mormont': { status: 'alive' },
     'Meera_Reed': { status: 'alive' },
-    'Melisandre': { status: 'alive' },
     'Missandei': { status: 'alive' },
-    'Night_King': { status: 'alive' },
     'Nymeria_Direwolf': { status: 'alive' },
     'Podrick_Payne': { status: 'alive' },
     'Qyburn': { status: 'alive' },
@@ -37,12 +39,10 @@ const characters = {
     'Sandor_Clegane': { status: 'alive' },
     'Sansa_Stark': { status: 'alive' },
     'Ser_Bronn': { status: 'alive' },
-    'Theon_Greyjoy': { status: 'alive' },
     'Tormund_Giantsbane': { status: 'alive' },
     'Tycho_Nestoris': { status: 'alive' },
     'Tyrion_Lannister': { status: 'alive' },
     'Varys': { status: 'alive' },
-    'Viserion_Dragon': { status: 'alive' },
     'Yara_Greyjoy': { status: 'alive' }
 };
 
@@ -308,26 +308,6 @@ class Picks {
     }
 }
 
-class Killer {
-    constructor() {
-
-    }
-
-    kill(id) {
-        [...document.getElementsByClassName(id)].forEach((char) => {
-            char.classList.add('dead');
-        });
-    }
-}
-
 const cardBuilder = new CardBuilder();
 
 new Picks(cardBuilder);
-
-const killer = new Killer();
-
-const deathList = [ ];
-
-for(const id of deathList) {
-    killer.kill(id);
-}
