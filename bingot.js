@@ -17,6 +17,7 @@ const characters = {
     'Gregor_Clegane': { status: 'dead' },
     'Jaime_Lannister': { status: 'dead' },
     'Cersei_Lannister': { status: 'dead' },
+    'Daenerys_Targaryen': { status: 'dead' },
 
     
     'Archmaester_Ebrose': { status: 'alive' },
@@ -24,7 +25,6 @@ const characters = {
     'Bran_Stark': { status: 'alive' },
     'Brienne_of_Tarth': { status: 'alive' },
     'Daario_Naharis': { status: 'alive' },
-    'Daenerys_Targaryen': { status: 'alive' },
     'Davos_Seaworth': { status: 'alive' },
     'Drogon_Dragon': { status: 'alive' },
     'Edmure_Tully': { status: 'alive' },
