@@ -292,6 +292,7 @@ class Picks {
         const picks = document.createElement('div');
         picks.classList.add('picks');
         miniCard.appendChild(picks);
+        let numDead = 0;
         pickSet.forEach((id) => {
             const status = characters[id].status;
             const char = document.createElement('div');
@@ -301,12 +302,16 @@ class Picks {
             char.classList.add(id);
             if (status === 'dead') {
                 char.classList.add('dead');
+                numDead++;
             }
             picks.appendChild(char);
             char.addEventListener('click', () => {
                 cardBuilder.loadPicks(pickSet);
             });
         });
+        const deadCountEl = document.createElement('div');
+        deadCountEl.innerText = numDead;
+        miniCard.appendChild(deadCountEl);
         this.minisEl.appendChild(miniCard);
     }
 }
