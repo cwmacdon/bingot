@@ -136,10 +136,8 @@ class CardBuilder {
         if (this.selected && !e.target.draggable) {
             e.target.appendChild(this.selected);
             this.deselect();
-            this.updatePicks();
         } else if (!this.selected && e.target.draggable) {
             this.unpick(e.target);
-            this.updatePicks();
         }
     }
     
@@ -162,15 +160,13 @@ class CardBuilder {
         const id = e.dataTransfer.getData('id');
         e.target.appendChild(document.getElementById(id));
         e.target.classList.remove('draggingover');
-        this.deselect();
-        this.updatePicks();
+        this.deselect()
     }
 
     append(el) {
         const firstOpenSlot = this.getFirstOpenSlot();
         if (firstOpenSlot) {
             firstOpenSlot.appendChild(el);
-            this.updatePicks();
         }
     }
     
@@ -182,11 +178,6 @@ class CardBuilder {
             picks.push(pick ? pick.id.replace(/ /g, '-') : '');
         });
         return picks;
-    }
-
-    updatePicks() {
-        const picks = this.getPicks();
-        document.getElementById('mail').href = `mailto:cwmacdon+bingot@gmail.com?body=${picks}`;
     }
 
     getFirstOpenSlot() {
